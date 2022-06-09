@@ -1,17 +1,15 @@
 const express = require("express");
-
 const app = express();
+const tasks = require("./routes/tasks");
 
-app.get("/", (req, res) => {
-  res.status(200).send("<h1>Home page</h1> ");
-});
+// middleware
+app.use(express.json());
 
+//routes
 app.get("/hello", (req, res) => {
   res.status(200).send("<h1>This is hello page</h1>");
 });
 
-app.get("*", (req, res) => {
-  res.status(404).send("Oops! Something went wrong!");
-});
+app.use("/api/v1/tasks", tasks);
 
 app.listen(3000, () => console.log("server is running on port 3000..."));
