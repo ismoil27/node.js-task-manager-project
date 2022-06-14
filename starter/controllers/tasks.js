@@ -4,9 +4,15 @@ const getAllTasks = (req, res) => {
   res.send("all items from the file");
 };
 
+// create task. connected to db (Task file)
 const createTask = async (req, res) => {
-  const task = await Task.create(req.body);
-  res.status(201).json({ task });
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+  // if we don't give try catch server doesn't send an error
 };
 
 const getTask = (req, res) => {

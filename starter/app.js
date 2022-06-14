@@ -1,8 +1,10 @@
 const express = require("express");
+// import express from "express";
+
 const app = express();
 const tasks = require("./routes/tasks");
 const connectDB = require("./db/connect");
-require("dotenv").config();
+require("dotenv").config(); //dotenv third party package. it is for .env
 
 // middleware
 app.use(express.json());
