@@ -7,12 +7,10 @@ const connectDB = require("./db/connect");
 require("dotenv").config(); //dotenv third party package. it is for .env
 
 // middleware
+app.use(express.static("./public"));
 app.use(express.json());
 
 //routes
-app.get("/hello", (req, res) => {
-  res.status(200).send("<h1>This is hello page</h1>");
-});
 
 app.use("/api/v1/tasks", tasks);
 

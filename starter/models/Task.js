@@ -9,7 +9,7 @@ const TaskSchema = new mongoose.Schema({
   },
   completed: {
     type: Boolean,
-    default: false, //completed is going to be false as default value
+    default: false, //completed is going to be false as default value for put method not for patch method
   },
 });
 
