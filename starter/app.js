@@ -5,6 +5,7 @@ const app = express();
 const tasks = require("./routes/tasks");
 const connectDB = require("./db/connect");
 require("dotenv").config(); //dotenv third party package. it is for .env
+const notFound = require("./middleware/not-found");
 
 // middleware
 app.use(express.static("./public"));
@@ -13,6 +14,8 @@ app.use(express.json());
 //routes
 
 app.use("/api/v1/tasks", tasks);
+
+app.use(notFound);
 
 const start = async () => {
   try {
